@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Chihuahua Haven Bot</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <div class="site-header-inner">
+      <div>
+        <h1>Chihuahua Haven</h1>
+        <p>Your Chihuahua helper is here to answer common care questions.</p>
+      </div>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="posts/chihuahua-care.html">Care</a>
+        <a href="posts/feeding-guide.html">Feeding</a>
+        <a href="posts/stop-barking.html">Training</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="chat-page">
+    <h2>Ask the Chihuahua Bot</h2>
+    <div class="chat-container" id="chatContainer">
+      <div class="messages" id="messages">
+        <div class="message bot">Hi! I’m the Chihuahua Bot. Ask me about feeding, care, training, or happy tiny dog life.</div>
+      </div>
+      <div class="chat-input">
+        <input id="userInput" type="text" placeholder="Type a question about your Chihuahua..." aria-label="Chihuahua bot question" />
+        <button id="sendButton">Send</button>
+      </div>
+    </div>
+    <p class="bot-note">Tip: Try questions like “How often should I feed a Chihuahua?” or “How do I stop my Chihuahua from barking?”</p>
+  </section>
+
+  <footer>
+    <p><a href="index.html">Back to home</a></p>
+    <p>© 2026 Chihuahua Haven</p>
+  </footer>
+
+  <script>
+    const responses = [
+      {
+        pattern: /feed|feeding|food|diet/i,
+        answer: 'Chihuahuas do well on 2-3 small, high-quality meals per day. Keep portions measured and avoid table scraps to protect their tiny tummies.'
+      },
+      {
+        pattern: /bark|barking|quiet|noise/i,
+        answer: 'To reduce barking, stay consistent with training, reward calm behavior, and give your Chihuahua plenty of mental stimulation so they stay happy, not anxious.'
+      },
+      {
+        pattern: /exercise|walk|play/i,
+        answer: 'Chihuahuas need short daily walks and playtime. A few 15-20 minute walks plus indoor games keeps them fit and prevents boredom.'
+      },
+      {
+        pattern: /health|vet|sick|illness/i,
+        answer: 'Regular vet checkups are important. Look out for dental issues, joint stiffness, and any changes in appetite or energy, and ask your vet about preventive care.'
+      },
+      {
+        pattern: /groom|coat|hair|bath/i,
+        answer: 'Brush your Chihuahua regularly and bathe them only when needed. Short-haired pups need less grooming than long-coated ones, but all benefit from routine care.'
+      },
+      {
+        pattern: /training|sit|stay|commands/i,
+        answer: 'Use positive reinforcement, small treats, and very short sessions. Chihuahuas respond best to calm, consistent training with lots of praise.'
+      }
+    ];
+
+    const defaultAnswer = 'That’s a great question! Try asking about feeding, grooming, exercise, barking, training, or health for a Chihuahua-specific answer.';
+    const messages = document.getElementById('messages');
+    const userInput = document.getElementById('userInput');
+    const sendButton = document.getElementById('sendButton');
+
+    function addMessage(text, role) {
+      const bubble = document.createElement('div');
+      bubble.className = `message ${role}`;
+      bubble.textContent = text;
+      messages.appendChild(bubble);
+      messages.scrollTop = messages.scrollHeight;
+    }
+
+    function getBotAnswer(text) {
+      const match = responses.find(item => item.pattern.test(text));
+      return match ? match.answer : defaultAnswer;
+    }
+
+    function handleSend() {
+      const text = userInput.value.trim();
+      if (!text) return;
+      addMessage(text, 'user');
+      addMessage(getBotAnswer(text), 'bot');
+      userInput.value = '';
+      userInput.focus();
+    }
+
+    sendButton.addEventListener('click', handleSend);
+    userInput.addEventListener('keydown', event => {
+      if (event.key === 'Enter') {
+        event.preventDefault();
+        handleSend();
+      }
+    });
+  </script>
+</body>
+</html>

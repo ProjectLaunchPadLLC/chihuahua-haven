@@ -1,43 +1,234 @@
 body {
-  font-family: Arial, sans-serif;
+  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   margin: 0;
   padding: 0;
   background: #fff8f0;
-  color: #333;
+  color: #2f2f2f;
+}
+
+* {
+  box-sizing: border-box;
 }
 
 header {
   background: #ffcc99;
-  padding: 20px;
-  text-align: center;
+  color: #3d1f04;
 }
 
-.hero {
-  padding: 20px;
-  background: #fff0e0;
+.site-header-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 24px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
 }
 
-.featured {
-  padding: 20px;
+header h1 {
+  margin: 0 0 8px;
+  font-size: clamp(2rem, 2.5vw, 3rem);
 }
 
-.featured ul {
-  list-style: none;
-  padding: 0;
+header p {
+  margin: 0;
+  font-size: 1rem;
+  opacity: 0.9;
 }
 
-.featured li {
-  margin: 10px 0;
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
 }
 
-.featured a {
-  color: #cc5500;
+nav a {
+  color: #662500;
   text-decoration: none;
-  font-weight: bold;
+  font-weight: 700;
+}
+
+main {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 28px 20px 40px;
+}
+
+.hero,
+.bot-link,
+.featured,
+.article-page,
+.not-found {
+  background: white;
+  border-radius: 22px;
+  box-shadow: 0 10px 40px rgba(102, 37, 0, 0.08);
+  padding: 32px;
+  margin-bottom: 24px;
+}
+
+.hero h2,
+.article-page h1,
+.not-found h2 {
+  margin-top: 0;
+  color: #a63e00;
+}
+
+.hero p,
+.bot-link p,
+.article-page p {
+  line-height: 1.75;
+  color: #4b2c15;
+}
+
+.featured h2,
+.bot-link h2 {
+  margin-top: 0;
+}
+
+.article-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 18px;
+}
+
+.article-grid article {
+  background: #fff3e5;
+  padding: 20px;
+  border-radius: 18px;
+}
+
+.article-grid a {
+  color: #8b3100;
+  text-decoration: none;
+}
+
+.article-grid a:hover {
+  text-decoration: underline;
+}
+
+.bot-button {
+  display: inline-block;
+  padding: 14px 26px;
+  background: #cc5500;
+  color: white;
+  text-decoration: none;
+  border-radius: 28px;
+  font-weight: 700;
 }
 
 footer {
   text-align: center;
   padding: 20px;
   background: #ffe0c2;
+  margin-top: -12px;
 }
+
+footer p {
+  margin: 0;
+  color: #603517;
+}
+
+.chat-page {
+  padding: 0;
+}
+
+.chat-container {
+  border: 1px solid #ffddb8;
+  background: #fff5eb;
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.messages {
+  display: flex;
+  flex-direction: column;
+  min-height: 280px;
+  max-height: 520px;
+  overflow-y: auto;
+  margin-bottom: 16px;
+}
+
+.message {
+  margin: 10px 0;
+  padding: 14px 18px;
+  border-radius: 18px;
+  line-height: 1.6;
+  max-width: 88%;
+}
+
+.message.user {
+  background: #ffecd6;
+  align-self: flex-end;
+  text-align: right;
+}
+
+.message.bot {
+  background: #ffffff;
+  border: 1px solid #ffe1c8;
+  align-self: flex-start;
+}
+
+.chat-input {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.chat-input input {
+  flex: 1 1 260px;
+  padding: 14px 16px;
+  border: 1px solid #ddc1a7;
+  border-radius: 12px;
+  font-size: 1rem;
+}
+
+.chat-input button {
+  padding: 14px 22px;
+  border: none;
+  border-radius: 12px;
+  background: #cc5500;
+  color: white;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.bot-note {
+  margin-top: 18px;
+  color: #6e4a29;
+  font-size: 0.96rem;
+}
+
+.article-page {
+  line-height: 1.8;
+}
+
+.article-page h2 {
+  color: #9f3900;
+}
+
+.article-page ul,
+.article-page ol {
+  padding-left: 20px;
+}
+
+.article-page p {
+  margin: 0 0 18px;
+}
+
+.not-found {
+  text-align: center;
+}
+
+@media (max-width: 720px) {
+  .site-header-inner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .chat-input {
+    flex-direction: column;
+  }
+}
+
