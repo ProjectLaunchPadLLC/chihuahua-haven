@@ -1,0 +1,43 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #fff8f0;
+  color: #333;
+}
+
+header {
+  background: #ffcc99;
+  padding: 20px;
+  text-align: center;
+}
+
+.hero {
+  padding: 20px;
+  background: #fff0e0;
+}
+
+.featured {
+  padding: 20px;
+}
+
+.featured ul {
+  list-style: none;
+  padding: 0;
+}
+
+.featured li {
+  margin: 10px 0;
+}
+
+.featured a {
+  color: #cc5500;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+footer {
+  text-align: center;
+  padding: 20px;
+  background: #ffe0c2;
+}
